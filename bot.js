@@ -1,9 +1,7 @@
 const prefix = "-";
 const adminprefix = "-";
-
-client.on('ready', () => {
-    console.log('I am ready!');
-});
+const Discord = require('discord.js');
+const client = new Discord.Client();
 
 client.on('ready', () => {
    console.log(`----------------`);
@@ -89,56 +87,6 @@ client.on('message', function(msg) {
 	
 	
 
-      client.on('message', message => {
-           if (message.content.startsWith(prefix + "id")) {
-     var args = message.content.split(" ").slice(1);
-     let user = message.mentions.users.first();
-     var men = message.mentions.users.first();
-        var heg;
-        if(men) {
-            heg = men
-        } else {
-            heg = message.author
-        }
-      var mentionned = message.mentions.members.first();
-         var h;
-        if(mentionned) {
-            h = mentionned
-        } else {
-            h = message.member
-        }
-               moment.locale('ar-TN');
-      var id = new  Discord.RichEmbed()
-      .setAuthor(message.author.username, message.author.avatarURL) 
-    .setColor("#707070")
-    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
-    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
-    .setFooter(`Toxic Codes`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')                                 
-    .setThumbnail(heg.avatarURL);
-    message.channel.send(id)
-}       
-});
-
-const moment = require('moment');
-
-client.on("guildMemberAdd", member => {
-let welcomer = member.guild.channels.find("name","welcome");
-      if(!welcomer) return;
-      if(welcomer) {
-         moment.locale('ar-ly');
-         var h = member.user;
-        let norelden = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(h.avatarURL)
-        .setAuthor(h.username,h.avatarURL)
-        .addField(': تاريخ دخولك الدسكورد',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
-         .addField(': تاريخ دخولك السيرفر',`${moment(member.joinedAt).format('D/M/YYYY h:mm a ')} \n\`\`${moment(member.joinedAt).startOf(' ').fromNow()}\`\``, true)      
-         .setFooter(`${h.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
-     welcomer.send({embed:norelden});          
-               
- 
-      }
-      });
 
 client.on('message', message => {
         if (message.content === "-invite") {
@@ -297,7 +245,7 @@ if (message.content.startsWith(prefix + "uptime")) {
 
 client.on("message", message => {
 
-            if (message.content.startsWith(prefix + "bc3")) {
+            if (message.content.startsWith(prefix + "bc")) {
                          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' '); 
@@ -351,40 +299,6 @@ client.on("message", message => {
 });
 
 client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!developers.includes(message.author.id)) return;
-      
-  if (message.content.startsWith(adminprefix + 'setg')) {
-    client.user.setGame(argresult);
-      message.channel.send(`**✅   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(adminprefix + 'setw')) {
-  client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`**✅   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(adminprefix + 'setl')) {
-  client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`**✅   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(adminprefix + 'sets')) {
-    client.user.setGame(argresult, "https://www.twitch.tv/zero");
-      message.channel.send(`**✅**`)
-  }
-  if (message.content.startsWith(adminprefix + 'setname')) {
-  client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
-} else
-  if (message.content.startsWith(adminprefix + 'setprefix')) {
-  client.user.setPrefix(argresult).then
-      message.channel.send(`Changing Prefix ..**${argresult}** `)
-} else
-if (message.content.startsWith(adminprefix + 'setavatar')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
-}
-});
-
-client.on('message', message => {
     if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
 if (message.content.startsWith('.bcall')){
@@ -395,7 +309,7 @@ m.sendMessage(args)
 })
 }
 });
-
+/*
 client.on('message', message => {
 if (message.content.split(' ')[0] == '-bc')
  message.guild.members.forEach( member => {
@@ -422,7 +336,7 @@ client.on("message", message => {
                             
                           }
 });
-
+*/
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -528,7 +442,7 @@ client.on('message', message => {
 message.channel.sendEmbed(embed);
    }
 });
-
+/*
 client.on('message', message => {
     var prefix = "-";
         if(message.content == prefix + 'server') {
@@ -561,7 +475,7 @@ client.on('message', message => {
         }
     });
 
-
+*/
 	
 client.on('message', message => {
   if (message.author.x5bz) return;
@@ -614,12 +528,4 @@ client.on("guildDelete", () => {
 });
 
 
-  });
-
-}
-
-);
-
-    })}});
-
-client.login(process.env.BOT_TOKEN);
+client.login("NTgxNzc4MzQzMjQ3MjE2NjQz.XOkN7A.SOHFtDlL1-PjOwsvMcpTEuYHlU0");
