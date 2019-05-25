@@ -527,5 +527,4 @@ client.on("guildDelete", () => {
     client.user.setActivity(`${prefix}help | Servers : ${client.guilds.size} Users : ${client.users.size}`, {type:'WATCHING'});
 });
 
-
-client.login("NTgxNzc4MzQzMjQ3MjE2NjQz.XOkN7A.SOHFtDlL1-PjOwsvMcpTEuYHlU0");
+client.login(process.env.BOT_TOKEN);
